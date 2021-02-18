@@ -1,11 +1,16 @@
 package com.application.testaplication.search_list;
 
+import android.annotation.SuppressLint;
+
 import androidx.annotation.Nullable;
 
 import com.application.testaplication.App;
 import com.application.testaplication.news_list.FirstPresenter;
 import com.application.testaplication.pojo.News;
 import com.application.testaplication.retrofit.NetworkServiceMessages;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.inject.Inject;
 
@@ -19,10 +24,13 @@ public class SearchModel implements SearchContracts.Model {
 
     @Override
     public void getDateMessages(@Nullable final SearchPresenter presenter,String str) {
-        App.getComponent().inject(this);
+        networkServiceMessages = App.networkServiceMessages().getNetworkService();
+
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         networkServiceMessages.getJSONApi()
-                .getMessageWithID(str, "2021-01-11", "publishedAt", "bc453cc87f8348e186ee35a0fe60d50f")
+                .getMessageWithID(str, simpleDateFormat.format(new Date()), "publishedAt", "a6362d35cfcd45ca92778e64f1e8e0e7")
                 .enqueue(new Callback<News>() {
                     @Override
                     public void onResponse(Call<News> call, Response<News> response) {

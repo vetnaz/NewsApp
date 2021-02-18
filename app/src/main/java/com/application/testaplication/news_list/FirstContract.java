@@ -1,5 +1,7 @@
 package com.application.testaplication.news_list;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 
 import com.application.testaplication.pojo.Message;
@@ -22,11 +24,18 @@ public interface FirstContract {
 
     interface Presenter{
         void requestDataFromServer();
+        void requestDataFromServer(String s);
         void onDestroy();
+
+        void putIntoDb(Message message, Context context);
     }
 
     interface Model{
         void getDateMessages(FirstPresenter presenter);
+        void getDateMessages(FirstPresenter presenter,String s);
+
+        void setData(Message message, Context context);
+
         interface CallbackInterface {
             void onSuccess(@NonNull List<Message> list);
             void onError(@NonNull Throwable throwable);

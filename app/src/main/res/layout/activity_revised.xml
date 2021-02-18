@@ -4,23 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".search_list.SearchActivity"
-    android:orientation="horizontal">
+    tools:context=".revised_activity.RevisedActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/searchRecycler"
+        android:id="@+id/revisedRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        />
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-    <TextView
-        android:id="@+id/noRezult"
+    <ProgressBar
+        android:id="@+id/revisedPbLoading"
+        style="@style/Base.Widget.AppCompat.ProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/no_rezults"
-        android:layout_centerInParent="true"
-        android:visibility="visible"
-    />
+        android:layout_centerInParent="true" />
 
 </RelativeLayout>

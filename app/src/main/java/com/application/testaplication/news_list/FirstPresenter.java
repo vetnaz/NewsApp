@@ -1,5 +1,7 @@
 package com.application.testaplication.news_list;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 
 import com.application.testaplication.pojo.Message;
@@ -27,8 +29,22 @@ public class FirstPresenter implements FirstContract.Presenter,FirstContract.Mod
     }
 
     @Override
+    public void requestDataFromServer(String s) {
+        if (view != null) {
+            view.showProgress();
+        }
+        assert view != null;
+        model.getDateMessages(this,s);
+    }
+
+    @Override
     public void onDestroy() {
         this.view = null;
+    }
+
+    @Override
+    public void putIntoDb(Message message, Context context) {
+        model.setData(message,context);
     }
 
     @Override

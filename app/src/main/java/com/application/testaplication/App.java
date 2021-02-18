@@ -6,7 +6,6 @@ import com.application.testaplication.di.component.DaggerNetworkComponent;
 import com.application.testaplication.di.component.NetworkComponent;
 import com.application.testaplication.di.modules.NetworkModule;
 
-import javax.inject.Inject;
 
 public class App extends Application {
     private static NetworkComponent networkComponent;
@@ -14,12 +13,14 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        networkComponent = DaggerNetworkComponent.builder()
+         networkComponent = DaggerNetworkComponent.builder()
                 .networkModule(new NetworkModule())
                 .build();
     }
 
-    public static NetworkComponent getComponent() {
+    public static NetworkComponent networkServiceMessages() {
         return networkComponent;
     }
+
+
 }

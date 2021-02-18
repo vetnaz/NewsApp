@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.application.testaplication.R;
 import com.application.testaplication.news_list.FirstActivity;
 import com.application.testaplication.pojo.Message;
+import com.application.testaplication.revised_activity.RevisedActivity;
 import com.application.testaplication.search_list.SearchActivity;
 import com.application.testaplication.search_list.SearchPresenter;
 import com.squareup.picasso.Picasso;
@@ -24,6 +25,7 @@ public class RecyclerNewsAdapter extends RecyclerView.Adapter<RecyclerNewsAdapte
     private static final String TAG = "RecyclerViewAdapter";
     private FirstActivity firstActivity;
     private SearchActivity searchActivity;
+    private RevisedActivity revisedActivity;
 
     private final List<Message> mDataSet;
 
@@ -34,6 +36,11 @@ public class RecyclerNewsAdapter extends RecyclerView.Adapter<RecyclerNewsAdapte
 
     public RecyclerNewsAdapter(List<Message> messages, SearchActivity searchActivity) {
         this.searchActivity=searchActivity;
+        this.mDataSet = messages;
+    }
+
+    public RecyclerNewsAdapter(List<Message> messages, RevisedActivity revisedActivity) {
+        this.revisedActivity=revisedActivity;
         this.mDataSet = messages;
     }
 
@@ -59,8 +66,7 @@ public class RecyclerNewsAdapter extends RecyclerView.Adapter<RecyclerNewsAdapte
             Picasso
                     .get()
                     .load(message.getUrlToImage())
-                    .resize(295,365)
-                    .centerCrop()
+                    .fit()
                     .into(holder.imageView);
         }
         catch (Exception e){
@@ -76,6 +82,10 @@ public class RecyclerNewsAdapter extends RecyclerView.Adapter<RecyclerNewsAdapte
                 if (firstActivity!=null){
                     firstActivity.onNewsClickListener(position);
                 }
+                if (revisedActivity!=null){
+                    revisedActivity.onNewsClickListener(position);
+                }
+
             }
         });
     }
@@ -89,18 +99,16 @@ public class RecyclerNewsAdapter extends RecyclerView.Adapter<RecyclerNewsAdapte
     public static class ViewHolder extends RecyclerView.ViewHolder {
         final TextView newsAuthor;
         final TextView newsTitle;
-        final TextView newsName;
         final TextView newsDescription;
         final ImageView imageView;
 
 
-        public ViewHolder(View v) {
+        ViewHolder(View v) {
             super(v);
 
             imageView = v.findViewById(R.id.imageNewsView);
             newsAuthor = v.findViewById(R.id.newsAuthor);
             newsTitle = v.findViewById(R.id.newsTitle);
-            newsName = v.findViewById(R.id.newsName);
             newsDescription = v.findViewById(R.id.newsDescriptions);
 
             v.setOnClickListener(new View.OnClickListener() {
@@ -118,10 +126,6 @@ public class RecyclerNewsAdapter extends RecyclerView.Adapter<RecyclerNewsAdapte
 
         public TextView getNewsTitle() {
             return newsTitle;
-        }
-
-        public TextView getNewsName() {
-            return newsName;
         }
 
         public TextView getNewsDescription() {

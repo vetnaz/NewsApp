@@ -1,4 +1,4 @@
-/**
+/*
  * @file MovieItemClickListener.java
  * @brief This is an interface class to handle click events of movie item in the list
  * @author Shrikant
@@ -8,6 +8,5 @@
 package com.application.testaplication.news_list;
 
 public interface NewsClickListener {
-
     void onNewsClickListener(int position);
 }

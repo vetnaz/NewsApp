@@ -13,7 +13,4 @@ import dagger.Component;
 @Component(modules = NetworkModule.class)
 public interface NetworkComponent {
     NetworkServiceMessages getNetworkService();
-
-    void inject(FirstModel firstModel);
-    void inject(SearchModel searchModel);
 }

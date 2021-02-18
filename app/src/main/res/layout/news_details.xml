@@ -39,6 +39,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableTop="@drawable/ic_public_black_24dp"
+                        android:textColor="@color/colorPrimary"
                         android:drawablePadding="5dp"
                         android:gravity="center_horizontal" />
 
@@ -49,7 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="5dp"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_marginStart="10dp"
@@ -61,6 +62,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:ellipsize="end"
+                    android:textColor="@color/colorBlack"
                     android:maxLines="12"
                     android:textStyle="bold"
                     android:typeface="sans"
@@ -72,11 +74,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:ellipsize="end"
-                    android:textColor="@color/colorYellow"
-                    android:textSize="15sp"
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textSize="20sp"
                     android:maxLines="12"
                     android:layout_marginStart="10dp"
-                    android:textStyle="bold"
                     android:typeface="sans" />
 
 
@@ -104,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="@string/details"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textStyle="bold"
                     android:textSize="20sp"
                     android:typeface="sans" />
@@ -119,13 +120,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:textColor="@color/colorBlack"
                         android:text="@string/author"
                         android:typeface="sans" />
 
                     <TextView
                         android:id="@+id/author_text"
                         android:layout_marginTop="5dp"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:textColor="@color/colorBlack"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </LinearLayout>
@@ -140,13 +143,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
+                        android:textColor="@color/colorBlack"
                         android:text="@string/resource"
                         android:typeface="sans" />
 
                     <TextView
                         android:id="@+id/source_text"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/colorBlack"
                         android:layout_weight="1" />
                 </LinearLayout>
 

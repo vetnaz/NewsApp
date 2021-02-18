@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.application.testaplication.R;
 import com.application.testaplication.news_details.NewsDetailsActivity;
@@ -25,6 +27,7 @@ import java.util.List;
      SearchPresenter searchPresenter;
      RecyclerView recyclerView;
      RecyclerNewsAdapter adapter;
+     TextView textView;
 
      @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,8 @@ import java.util.List;
 
          adapter.notifyDataSetChanged();
          recyclerView.setAdapter(adapter);
+
+         textView = findViewById(R.id.noRezult);
      }
 
      @Override
@@ -63,8 +68,18 @@ import java.util.List;
 
              @Override
              public boolean onQueryTextChange(String newText) {
-                 searchPresenter.requestDataFromServer(newText);
-                 adapter.notifyDataSetChanged();
+                 if(newText.equals("")){
+                     messages.clear();
+                     adapter.notifyDataSetChanged();
+                     if (messages.size()==0){
+                         textView.setVisibility(View.VISIBLE);
+                     }else {
+                         textView.setVisibility(View.GONE);
+                     }
+                 }else {
+                     searchPresenter.requestDataFromServer(newText);
+                     adapter.notifyDataSetChanged();
+                 }
 
                  return  true;
              }
@@ -84,6 +99,11 @@ import java.util.List;
 
      @Override
      public void setDataToRecyclerView(List<Message> list) {
+         if (list.size()==0){
+             textView.setVisibility(View.VISIBLE);
+         }else {
+             textView.setVisibility(View.GONE);
+         }
          messages.clear();
          messages.addAll(list);
          adapter.notifyDataSetChanged();
