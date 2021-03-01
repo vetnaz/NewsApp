@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".news_details.NewsDetailsActivity"
+    tools:context=".newsdetailsscreen.NewsDetailsActivity"
     android:fitsSystemWindows="true"
     >
 
@@ -37,7 +37,7 @@
                android:fitsSystemWindows="true"
                android:scaleType="centerCrop"
                app:layout_collapseMode="parallax"
-                />
+               android:contentDescription="@string/photo_of_news" />
 
            <ProgressBar
                android:id="@+id/pb_load_backdrop"

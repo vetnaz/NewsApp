@@ -1,12 +1,13 @@
 package com.application.testaplication.di.modules;
 
-import com.application.testaplication.retrofit.NetworkServiceMessages;
+import com.application.testaplication.network.NetworkServiceMessages;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
@@ -22,9 +23,10 @@ public class NetworkModule {
     @Provides
     Retrofit retrofit(GsonConverterFactory gsonConverterFactory){
          return new Retrofit.Builder()
-                .baseUrl("https://newsapi.org/")
-                .addConverterFactory(gsonConverterFactory)
-                .build();
+                 .baseUrl("https://newsapi.org/")
+                 .addConverterFactory(gsonConverterFactory)
+                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                 .build();
     }
 
     @Singleton

@@ -7,15 +7,16 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.application.testaplication.entities.MessageEntity;
-import com.application.testaplication.pojo.Message;
 
 import java.util.List;
+
+import io.reactivex.Single;
 
 @Dao
 public interface MessagesDao {
 
     @Query("SELECT DISTINCT * FROM messageentity")
-    List<MessageEntity> getAll();
+    Single<List<MessageEntity>> getAll();
 
     @Insert
     void insert(MessageEntity messageEntity);
